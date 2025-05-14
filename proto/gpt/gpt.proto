@@ -1,0 +1,20 @@
+syntax= "proto3";
+
+package gpt;
+
+option go_package = "api-gateway/gen/gpt";
+
+service Recommendation {
+    rpc GetGPTRecommendation(UserRequest) returns (GPTResponse);
+}
+
+message UserRequest {
+    repeated string products = 1;
+    string preference = 2;
+}
+
+message GPTResponse {
+    string message = 1;
+    bytes image_data = 2;
+    string image_format = 3;
+}

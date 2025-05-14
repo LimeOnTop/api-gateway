@@ -1,0 +1,22 @@
+app: 
+  name: "api-gateway"
+  version: "0.0.1"
+
+grpc:
+  port: 50054
+  timeout: 30
+
+logger:
+  level: "debug"
+
+auth:
+  port: 50051
+  timeout: 30
+
+user:
+  port: 50052
+  timeout: 30
+
+gpt:
+  port: 50053
+  timeout: 30

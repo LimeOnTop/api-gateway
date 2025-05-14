@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "api-gateway/gen/user";
+
+service UserService {
+    rpc GetUserProducts (UserRequest) returns (GetProductsResponse);
+    rpc GetUserPreference (UserRequest) returns (GetPreferenceResponse);
+    rpc AddUserProduct (AddProductRequest) returns (AddProductResponse);
+    rpc RemoveUserProduct (RemoveProductRequest) returns (RemoveProductResponse);
+    rpc UpdateUserPreference (UpdatePreferenceRequest) returns (UpdatePreferenceResponse);
+    rpc RemoveUserPreference (RemovePreferenceRequest) returns (RemovePreferenceResponse);
+}
+
+message UpdatePreferenceRequest {
+    string access_token = 1;
+    string preference_name = 2;
+}
+
+message RemoveProductRequest {
+    string access_token = 1;
+    string product_name = 2;
+}
+
+message AddProductRequest {
+    string access_token = 1;
+    string product_name = 2;
+}
+
+message RemovePreferenceRequest {
+    string access_token = 1;
+}
+
+message UserRequest {
+    string access_token = 1;
+}
+
+message GetProductsResponse {
+    repeated string product_names = 1;
+}
+
+message GetPreferenceResponse {
+    string preference_name = 1;
+}
+
+message AddProductResponse {
+    bool success = 1;
+}
+
+message RemoveProductResponse {
+    bool success = 1;
+}
+
+message UpdatePreferenceResponse {
+    bool success = 1;
+}
+
+message RemovePreferenceResponse {
+    bool success = 1;
+}
