@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v5.29.3
-// source: gpt.proto
+// source: gpt/gpt.proto
 
 package gpt
 
@@ -31,7 +31,7 @@ type UserRequest struct {
 
 func (x *UserRequest) Reset() {
 	*x = UserRequest{}
-	mi := &file_gpt_proto_msgTypes[0]
+	mi := &file_gpt_gpt_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *UserRequest) String() string {
 func (*UserRequest) ProtoMessage() {}
 
 func (x *UserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_gpt_proto_msgTypes[0]
+	mi := &file_gpt_gpt_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *UserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserRequest.ProtoReflect.Descriptor instead.
 func (*UserRequest) Descriptor() ([]byte, []int) {
-	return file_gpt_proto_rawDescGZIP(), []int{0}
+	return file_gpt_gpt_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *UserRequest) GetProducts() []string {
@@ -84,7 +84,7 @@ type GPTResponse struct {
 
 func (x *GPTResponse) Reset() {
 	*x = GPTResponse{}
-	mi := &file_gpt_proto_msgTypes[1]
+	mi := &file_gpt_gpt_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -96,7 +96,7 @@ func (x *GPTResponse) String() string {
 func (*GPTResponse) ProtoMessage() {}
 
 func (x *GPTResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_gpt_proto_msgTypes[1]
+	mi := &file_gpt_gpt_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -109,7 +109,7 @@ func (x *GPTResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GPTResponse.ProtoReflect.Descriptor instead.
 func (*GPTResponse) Descriptor() ([]byte, []int) {
-	return file_gpt_proto_rawDescGZIP(), []int{1}
+	return file_gpt_gpt_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GPTResponse) GetMessage() string {
@@ -133,11 +133,11 @@ func (x *GPTResponse) GetImageFormat() string {
 	return ""
 }
 
-var File_gpt_proto protoreflect.FileDescriptor
+var File_gpt_gpt_proto protoreflect.FileDescriptor
 
-const file_gpt_proto_rawDesc = "" +
+const file_gpt_gpt_proto_rawDesc = "" +
 	"\n" +
-	"\tgpt.proto\x12\x03gpt\"I\n" +
+	"\rgpt/gpt.proto\x12\x03gpt\"I\n" +
 	"\vUserRequest\x12\x1a\n" +
 	"\bproducts\x18\x01 \x03(\tR\bproducts\x12\x1e\n" +
 	"\n" +
@@ -152,23 +152,23 @@ const file_gpt_proto_rawDesc = "" +
 	"\x14GetGPTRecommendation\x12\x10.gpt.UserRequest\x1a\x10.gpt.GPTResponseB\x15Z\x13api-gateway/gen/gptb\x06proto3"
 
 var (
-	file_gpt_proto_rawDescOnce sync.Once
-	file_gpt_proto_rawDescData []byte
+	file_gpt_gpt_proto_rawDescOnce sync.Once
+	file_gpt_gpt_proto_rawDescData []byte
 )
 
-func file_gpt_proto_rawDescGZIP() []byte {
-	file_gpt_proto_rawDescOnce.Do(func() {
-		file_gpt_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_gpt_proto_rawDesc), len(file_gpt_proto_rawDesc)))
+func file_gpt_gpt_proto_rawDescGZIP() []byte {
+	file_gpt_gpt_proto_rawDescOnce.Do(func() {
+		file_gpt_gpt_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_gpt_gpt_proto_rawDesc), len(file_gpt_gpt_proto_rawDesc)))
 	})
-	return file_gpt_proto_rawDescData
+	return file_gpt_gpt_proto_rawDescData
 }
 
-var file_gpt_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_gpt_proto_goTypes = []any{
+var file_gpt_gpt_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_gpt_gpt_proto_goTypes = []any{
 	(*UserRequest)(nil), // 0: gpt.UserRequest
 	(*GPTResponse)(nil), // 1: gpt.GPTResponse
 }
-var file_gpt_proto_depIdxs = []int32{
+var file_gpt_gpt_proto_depIdxs = []int32{
 	0, // 0: gpt.Recommendation.GetGPTRecommendation:input_type -> gpt.UserRequest
 	1, // 1: gpt.Recommendation.GetGPTRecommendation:output_type -> gpt.GPTResponse
 	1, // [1:2] is the sub-list for method output_type
@@ -178,26 +178,26 @@ var file_gpt_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_gpt_proto_init() }
-func file_gpt_proto_init() {
-	if File_gpt_proto != nil {
+func init() { file_gpt_gpt_proto_init() }
+func file_gpt_gpt_proto_init() {
+	if File_gpt_gpt_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_gpt_proto_rawDesc), len(file_gpt_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_gpt_gpt_proto_rawDesc), len(file_gpt_gpt_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_gpt_proto_goTypes,
-		DependencyIndexes: file_gpt_proto_depIdxs,
-		MessageInfos:      file_gpt_proto_msgTypes,
+		GoTypes:           file_gpt_gpt_proto_goTypes,
+		DependencyIndexes: file_gpt_gpt_proto_depIdxs,
+		MessageInfos:      file_gpt_gpt_proto_msgTypes,
 	}.Build()
-	File_gpt_proto = out.File
-	file_gpt_proto_goTypes = nil
-	file_gpt_proto_depIdxs = nil
+	File_gpt_gpt_proto = out.File
+	file_gpt_gpt_proto_goTypes = nil
+	file_gpt_gpt_proto_depIdxs = nil
 }

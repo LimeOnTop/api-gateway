@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v5.29.3
-// source: gpt.proto
+// source: gpt/gpt.proto
 
 package gpt
 
@@ -117,5 +117,5 @@ var Recommendation_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "gpt.proto",
+	Metadata: "gpt/gpt.proto",
 }
