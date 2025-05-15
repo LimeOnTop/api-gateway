@@ -16,5 +16,12 @@ func main() {
 		log.Fatal(err)
 	}
 
-	app.Run(cfg, *devMode)
+	srv, err := app.NewServer(cfg)
+	if err != nil {
+		log.Fatalf("Failed to create server: %v", err)
+	}
+
+	if err := srv.Run(cfg, *devMode); err != nil {
+		log.Fatalf("Failed to run server: %v", err)
+	}
 }

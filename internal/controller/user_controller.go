@@ -11,7 +11,7 @@ type UserController struct {
 	userClient *client.UserClient
 }
 
-func NewUserClient(userClient *client.UserClient) *UserController {
+func NewUserController(userClient *client.UserClient) *UserController {
 	return &UserController{
 		userClient: userClient,
 	}

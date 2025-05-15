@@ -11,7 +11,7 @@ type AuthController struct {
 	authClient *client.AuthClient
 }
 
-func NewAuthClient(authClient *client.AuthClient) *AuthController {
+func NewAuthController(authClient *client.AuthClient) *AuthController {
 	return &AuthController{
 		authClient: authClient,
 	}

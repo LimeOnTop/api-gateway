@@ -1,28 +1,28 @@
 package config
 
 import (
-	"log"
 	"github.com/ilyakaznacheev/cleanenv"
+	"log"
 )
 
 type (
 	Config struct {
-		App AppConfig `yaml:"app"`
-		GRPC GRPCConfig `yaml:"grpc"`
-		Log LogConfig `yaml:"logger"`
-		Auth AuthConfig `yaml:"auth"`
-		User UserConfig `yaml:"user"`
-		Gpt GptConfig `yaml:"gpt"`
+		App    AppConfig    `yaml:"app"`
+		Server ServerConfig `yaml:"server"`
+		Log    LogConfig    `yaml:"logger"`
+		Auth   AuthConfig   `yaml:"auth"`
+		User   UserConfig   `yaml:"user"`
+		Gpt    GptConfig    `yaml:"gpt"`
 	}
 
 	AppConfig struct {
-		Name string `yaml:"name"`
+		Name    string `yaml:"name"`
 		Version string `yaml:"version"`
 	}
 
-	GRPCConfig struct {
-		Port string `yaml:"port"`
-		Timeout int `yaml:"timeout"`
+	ServerConfig struct {
+		Port    string `yaml:"port"`
+		Timeout int    `yaml:"timeout"`
 	}
 
 	LogConfig struct {
@@ -30,18 +30,18 @@ type (
 	}
 
 	AuthConfig struct {
-		Port string `yaml:"port"`
-		Timeout int `yaml:"timeout"`
+		Address string `yaml:"address"`
+		Timeout int    `yaml:"timeout"`
 	}
 
 	UserConfig struct {
-		Port string `yaml:"port"`
-		Timeout int `yaml:"timeout"`
+		Address string `yaml:"address"`
+		Timeout int    `yaml:"timeout"`
 	}
 
 	GptConfig struct {
-		Port string `yaml:"port"`
-		Timeout int `yaml:"timeout"`
+		Address string `yaml:"address"`
+		Timeout int    `yaml:"timeout"`
 	}
 )
 
