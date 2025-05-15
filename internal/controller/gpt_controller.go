@@ -2,7 +2,6 @@ package controller
 
 import (
 	"net/http"
-	"strings"
 
 	"api-gateway/gen/gpt"
 	"api-gateway/gen/user"
@@ -12,24 +11,23 @@ import (
 )
 
 type GptController struct {
-	gptClient *client.GptClient
+	gptClient  *client.GptClient
 	userClient *client.UserClient
 }
 
 func NewGptController(gptClient *client.GptClient, userClient *client.UserClient) *GptController {
 	return &GptController{
-		gptClient: gptClient,
+		gptClient:  gptClient,
 		userClient: userClient,
 	}
 }
 
 func (c *GptController) GetGPTRecommendation(ctx *gin.Context) {
-	authHeader := ctx.GetHeader("Authorization")
-	if authHeader == "" {
+	accessToken := ctx.GetHeader("Authorization")
+	if accessToken == "" {
 		ctx.JSON(http.StatusUnauthorized, gin.H{"error": "Authorization header is missing"})
-		return 
+		return
 	}
-	accessToken := strings.TrimPrefix(authHeader, "Bearer ")
 	userProducts, err := c.userClient.GetUserProducts(ctx.Request.Context(), &user.UserRequest{
 		AccessToken: accessToken,
 	})
@@ -46,8 +44,8 @@ func (c *GptController) GetGPTRecommendation(ctx *gin.Context) {
 	}
 	// Вызываем метод GetGPTRecommendation у gptClient
 	resp, err := c.gptClient.GetGPTRecommendation(ctx, &gpt.UserRequest{
-		Products:    userProducts.ProductNames,
-		Preference:  userPreference.PreferenceName,
+		Products:   userProducts.ProductNames,
+		Preference: userPreference.PreferenceName,
 	})
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get recommendation"})
@@ -61,4 +59,3 @@ func (c *GptController) GetGPTRecommendation(ctx *gin.Context) {
 		"Format":  resp.ImageFormat,
 	})
 }
-

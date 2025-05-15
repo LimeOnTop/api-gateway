@@ -55,6 +55,7 @@ func (s *Server) setupRoutes() {
 	public := s.router.Group("/api/v1")
 	{
 		public.POST("/login", authController.Login)
+		public.POST("/register", authController.Register)
 	}
 
 	// Protected routes
@@ -64,11 +65,12 @@ func (s *Server) setupRoutes() {
 		// User routes
 		protected.POST("/user/products", userController.AddProduct)
 		protected.DELETE("/user/products", userController.RemoveProduct)
-		protected.PUT("/user/preferences", userController.UpdatePreferences)
+		protected.PUT("/user/preferences", userController.UpdatePreference)
 		protected.GET("/user/products", userController.GetUserProducts)
+		protected.GET("/user/preferences", userController.GetUserPreference)
 
 		// GPT routes
-		protected.POST("/gpt/generate", gptController.GenerateResponse)
+		protected.POST("/gpt/generate", gptController.GetGPTRecommendation)
 	}
 }
 

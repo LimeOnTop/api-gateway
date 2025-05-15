@@ -33,13 +33,13 @@ func AuthMiddleware(authClient *client.AuthClient) gin.HandlerFunc {
 		res, err := authClient.ValidateToken(ctx.Request.Context(), &auth.ValidateTokenRequest{AccessToken: accessToken})
 		if err != nil || !res.Valid {
 			// Пробуем обновить токен
-			newRefreshToken, refreshErr := authClient.RefreshToken(ctx.Request.Context(), &auth.RefreshTokenRequest{RefreshToken: refreshToken})
+			newAccessToken, refreshErr := authClient.RefreshToken(ctx.Request.Context(), &auth.RefreshTokenRequest{RefreshToken: refreshToken})
 			if refreshErr != nil {
 				ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid token"})
 				return
 			}
 			// Устанавливаем новые токены в заголовки ответа
-			ctx.Header("New-Access-Token", newRefreshToken.AccessToken)
+			ctx.Header("Authorization", newAccessToken.AccessToken)
 		}
 
 	}
