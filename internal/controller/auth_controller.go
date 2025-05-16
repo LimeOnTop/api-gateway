@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"strings"
 
 	"api-gateway/gen/auth"
 	"api-gateway/internal/client"
@@ -129,10 +130,11 @@ func (c *AuthController) Logout(ctx *gin.Context) {
 }
 
 func (c *AuthController) getAuthHeader(ctx *gin.Context) string {
-	accessToken := ctx.GetHeader("Authorization")
-	if accessToken == "" {
+	authHeader:= ctx.GetHeader("Authorization")
+	if authHeader == "" {
 		ctx.JSON(http.StatusUnauthorized, gin.H{"error": "Authorization header is missing"})
 		return ""
 	}
+	accessToken := strings.TrimPrefix(authHeader, "Bearer ")
 	return accessToken
 }

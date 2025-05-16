@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"strings"
 
 	"api-gateway/gen/gpt"
 	"api-gateway/gen/user"
@@ -23,11 +24,12 @@ func NewGptController(gptClient *client.GptClient, userClient *client.UserClient
 }
 
 func (c *GptController) GetGPTRecommendation(ctx *gin.Context) {
-	accessToken := ctx.GetHeader("Authorization")
-	if accessToken == "" {
+	authHeader := ctx.GetHeader("Authorization")
+	if authHeader == "" {
 		ctx.JSON(http.StatusUnauthorized, gin.H{"error": "Authorization header is missing"})
 		return
 	}
+	accessToken := strings.TrimPrefix(authHeader, "Bearer ")
 	userProducts, err := c.userClient.GetUserProducts(ctx.Request.Context(), &user.UserRequest{
 		AccessToken: accessToken,
 	})

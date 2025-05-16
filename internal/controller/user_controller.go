@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"strings"
 
 	"api-gateway/gen/user"
 	"api-gateway/internal/client"
@@ -136,10 +137,11 @@ func (c *UserController) RemovePreference(ctx *gin.Context) {
 }
 
 func (c *UserController) getAuthHeader(ctx *gin.Context) string {
-	accessToken := ctx.GetHeader("Authorization")
-	if accessToken == "" {
+	authHeader := ctx.GetHeader("Authorization")
+	if authHeader == "" {
 		ctx.JSON(http.StatusUnauthorized, gin.H{"error": "Authorization header is missing"})
 		return ""
 	}
+	accessToken := strings.TrimPrefix(authHeader, "Bearer ")
 	return accessToken
 }

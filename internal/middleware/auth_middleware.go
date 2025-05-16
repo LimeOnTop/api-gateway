@@ -39,7 +39,7 @@ func AuthMiddleware(authClient *client.AuthClient) gin.HandlerFunc {
 				return
 			}
 			// Устанавливаем новые токены в заголовки ответа
-			ctx.Header("Authorization", newAccessToken.AccessToken)
+			ctx.Header("Authorization", "Bearer "+newAccessToken.AccessToken)
 		}
 
 	}
